@@ -18,8 +18,11 @@ int fib(int n, map<int, int> &memo) {
     if (memo.count(n) != 0) {
         return memo[n];
     }
-    else if (n == 1 || n == 2) {
+    else if (n == 1) {
         return 1;
+    }
+    else if (n == 2) {
+        return 2;
     }
     else {
         memo[n] = fib(n-1, memo) + fib(n-2, memo);
@@ -29,7 +32,7 @@ int fib(int n, map<int, int> &memo) {
 
 int main() {
     map<int, int> memo = {};
-    int i = 1;
+    int i = 2;
     int result = 0;
     while (fib(i, memo) <= 4000000){
         result += (fib(i, memo) % 2) == 0 ? fib(i, memo) : 0;
