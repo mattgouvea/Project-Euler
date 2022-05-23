@@ -10,24 +10,15 @@
 
 using namespace std;
 
-bool isPrime(int n) {
-    for (int i = 3; i<ceil(sqrt(n)); ++i) {
-        if (n % i == 0) {
-            return false;
-        }
-    }
-    return true;
-}
-
 long int findMaxFactor(long int n) {
-    long int maxFactor = 0;
-    if (n % 2 == 0) {
-        maxFactor = 2;
-    }
-    for(long int i = 3; i<ceil(sqrt(n)); i += 2) {
-        if(n % i == 0 && isPrime(i)) {
-            maxFactor = i;
+    long int maxFactor = 1;
+    long int i = 2;
+    while(n > 1) {
+        while (n % i == 0) {
+            n = n/i;
         }
+        maxFactor = i;
+        i++;
     }
     return maxFactor;
 }
